@@ -1,0 +1,13 @@
+create or replace procedure agg_func(dname empsal.DNAME%type)
+is
+avgsal empsal.Salary%type;
+highsal empsal.Salary%type;
+lowsal empsal.Salary%type;
+begin
+	select max(Salary),min(Salary),avg(Salary) 
+	into highsal,lowsal,avgsal from empsal
+	where DNAME=dname;
+	dbms_output.put_line('LOWSAL'||chr(9)||'AVGSAL'||chr(9)||'HIGHSAL');
+	dbms_output.put_line(lowsal||chr(9)||avgsal||chr(9)||highsal);
+end;
+/
